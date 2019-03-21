@@ -367,7 +367,7 @@ var prng=new AESprng(seed);if(document.key.keytype[0].checked){var charA=("A")
 {k+=String.fromCharCode(charA+prng.nextInt(25));}}}else{var hexDigits="0123456789ABCDEF";
 for(i=0;i<64;i++){k+=hexDigits.charAt(prng.nextInt(15));}}
 document.key.text.value=k;delete prng;}function Encrypt_text(){var v,i;
-var prefix="",suffix="";if(document.key.text.value.length==0)
+var prefix="#####  Encrypted: decrypt with http://www.fourmilab.ch/javascrypt/\n",suffix="#####  End encrypted message\n";if(document.key.text.value.length==0)
 {alert("Please specify a key with which to encrypt the message.");return;}if(document.plain.text.value.length==0){alert("No plain text to encrypt!  Please enter or paste plain text in the field above.");
 return;}document.cipher.text.value="";setKey();addEntropyTime();
 prng=new AESprng(keyFromEntropy());
@@ -434,13 +434,13 @@ onfocus="ce();" onblur="ce();" onkeydown="ce();" />
 &nbsp;
 <input type="button" value=" Clear " onclick="document.key.text.value = '';" />
 &nbsp;
-<input type="button" value=" Copy " onclick="document.key.text.select(); document.execCommand('copy');" />
+<input type="button" value=" Select " onclick="document.key.text.select();" />
 </p>
 </form>
 <form name="plain" action="#" onsubmit="return false;">
 <h3>Plain Text</h3>
 <p align="center">
-<textarea name="text" rows="10" cols="80"
+<textarea name="text" rows="16" cols="80"
 style="background-color: rgb(200, 255, 200); color: #000000;"
 onfocus="ce();" onblur="ce();" onkeydown="ce();">
 </textarea>
@@ -449,20 +449,20 @@ onfocus="ce();" onblur="ce();" onkeydown="ce();">
 &nbsp;
 <input type="button" value=" Clear " onclick="document.plain.text.value = '';" />
 &nbsp;
-<input type="button" value=" Copy " onclick="document.plain.text.select(); document.execCommand('copy');" />
+<input type="button" value=" Select " onclick="document.plain.text.select();" />
 <br />
 <b>Encoding:</b>&nbsp;
-<input type="radio" name="encoding" />&nbsp;Codegroup
+<input type="radio" checked="checked" name="encoding" />&nbsp;Codegroup
 &nbsp;
 <input type="radio" name="encoding" />&nbsp;Hexadecimal
 &nbsp;
-<input type="radio" checked="checked" name="encoding" />&nbsp;Base&nbsp;64
+<input type="radio" name="encoding" />&nbsp;Base&nbsp;64
 </p>
 </form>
 <form name="cipher" action="#" onsubmit="return false;">
 <h3>Cipher Text</h3>
 <p align="center">
-<textarea name="text" rows="8" cols="80"
+<textarea name="text" rows="16" cols="80"
 style="background-color: rgb(255, 200, 200); color: #000000;"
 onfocus="ce();" onblur="ce();" onkeydown="ce();">
 </textarea>
@@ -471,12 +471,18 @@ onfocus="ce();" onblur="ce();" onkeydown="ce();">
 &nbsp;
 <input type="button" value=" Clear " onclick="document.cipher.text.value = '';" />
 &nbsp;
-<input type="button" value=" Copy " onclick="document.cipher.text.select(); document.execCommand('copy');" />
+<input type="button" value=" Select " onclick="document.cipher.text.select();" />
 </p>
 </form>
 <p />
+<hr />
+<p />
 <address>
-by <a href="http://www.fourmilab.ch/">John Walker</a> Dec., 2005
+by <a href="http://www.fourmilab.ch/">John Walker</a><br />
+December, 2005
 </address>
+<center>
+<em>This document is in the public domain.</em>
+</center>
 </body>
 </html>
